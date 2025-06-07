@@ -1,0 +1,19 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npm run build"
+startCommand = "npm run start:prod"
+installCommand = "npm install --frozen-lockfile"
+nixpacks = { version = "node16" }
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartDelay = 5
+
+[build.environment]
+NODE_ENV = "production"
+NPM_CONFIG_PRODUCTION = "false"
+
+[deploy.regions]
+primary = "europe-west1"
+fallback = "us-east1"
