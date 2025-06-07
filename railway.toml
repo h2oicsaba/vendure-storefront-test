@@ -1,0 +1,20 @@
+[build]
+builder = "dockerfile"
+dockerfile = "Dockerfile.local"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartDelay = 5
+
+[build.environment]
+NODE_ENV = "production"
+
+[deploy.regions]
+primary = "europe-west1"
+fallback = "us-east1"
+
+# Environment variables needed for the application
+[variables]
+# Set this to your Vendure server URL
+# API_URL = "https://your-vendure-server.com"
