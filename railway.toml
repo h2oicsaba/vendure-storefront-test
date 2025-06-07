@@ -1,9 +1,6 @@
 [build]
-builder = "nixpacks"
-buildCommand = "npm install && npm run build"
-startCommand = "npm run start:prod"
-installCommand = "npm install --frozen-lockfile"
-nixpacks = { version = "node16" }
+builder = "dockerfile"
+dockerfile = "Dockerfile.local"
 
 [deploy]
 healthcheckPath = "/"
@@ -12,8 +9,12 @@ restartDelay = 5
 
 [build.environment]
 NODE_ENV = "production"
-NPM_CONFIG_PRODUCTION = "false"
 
 [deploy.regions]
 primary = "europe-west1"
 fallback = "us-east1"
+
+# Environment variables needed for the application
+[variables]
+# Set this to your Vendure server URL
+# API_URL = "https://your-vendure-server.com"
