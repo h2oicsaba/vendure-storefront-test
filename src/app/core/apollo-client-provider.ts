@@ -124,7 +124,7 @@ export function apolloOptionsFactory(
     const middleware = new ApolloLink((operation, forward) => {
         let headers = new HttpHeaders();
         if (environment.channelToken) {
-            headers = headers.set('vendure-channel-token', environment.channelToken);
+            headers = headers.set('vendure-token', environment.channelToken);
         }
         if (isPlatformBrowser(platformId)) {
             headers = headers.set(
