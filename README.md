@@ -45,6 +45,7 @@ To deploy this storefront in a production environment, take the following steps:
      }
    })
    ```
+6. Optionally set a `CHANNEL_TOKEN` environment variable before running the build to specify which Vendure channel this storefront should use. On Railway deployments this can be configured in the project settings under **Variables**.
 
 ### Deploying the demo
 

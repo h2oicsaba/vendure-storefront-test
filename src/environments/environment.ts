@@ -9,6 +9,7 @@ export const environment = {
     shopApiPath: 'shop-api',
     baseHref: '/',
     tokenMethod: 'bearer',
+    channelToken: process?.env?.CHANNEL_TOKEN ?? '',
 };
 
 /*

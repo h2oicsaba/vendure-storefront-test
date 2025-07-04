@@ -5,4 +5,5 @@ export const environment = {
     shopApiPath: 'shop-api',
     baseHref: '/',
     tokenMethod: 'cookie',
+    channelToken: process?.env?.CHANNEL_TOKEN ?? '',
 };

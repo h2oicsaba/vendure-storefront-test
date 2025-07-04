@@ -122,14 +122,17 @@ export function apolloOptionsFactory(
         });
     });
     const middleware = new ApolloLink((operation, forward) => {
-        if (isPlatformBrowser(platformId)) {
-            operation.setContext({
-                headers: new HttpHeaders().set(
-                    'Authorization',
-                    `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY) || null}`,
-                ),
-            });
+        let headers = new HttpHeaders();
+        if (environment.channelToken) {
+            headers = headers.set('vendure-token', environment.channelToken);
         }
+        if (isPlatformBrowser(platformId)) {
+            headers = headers.set(
+                'Authorization',
+                `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY) || null}`,
+            );
+        }
+        operation.setContext({ headers });
         return forward(operation);
     });
 
